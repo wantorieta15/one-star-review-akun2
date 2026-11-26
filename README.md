@@ -23,10 +23,12 @@ be fixed.
 `main.py` (pure Python stdlib, no dependencies, no network) writes the
 frozen one-line review to `entry.txt` in the output directory
 (`MAKEFUN_OUTPUT_DIR`, default `/output`), exactly 111 bytes with no
-trailing newline.
+trailing newline. The reviser added `validate_entry()`, which checks the
+text is a single newline-free line of exactly 111 bytes and that its
+SHA-256 matches the verified expectation before anything is written.
 
 Run it:
 
 ```sh
-MAKEFUN_OUTPUT_DIR=/tmp/one-star-review-a2-verify python3 main.py
+MAKEFUN_OUTPUT_DIR=/tmp/one-star-review-a2-rev-verify python3 main.py
 ```
